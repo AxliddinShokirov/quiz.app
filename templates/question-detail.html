@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-content" style="min-height: 608px;">
+    <section class="section">
+      <div class="section-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Savol haqida</h4>
+              </div>
+
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Savol matni</label>
+                        <textarea readonly type="text" class="form-control" name="name">{{ question.name }}</textarea>
+                    </div>
+                      {% for option in question.options %}
+                    <div class="container mt-4">
+                        <div id="input-container">
+                            <div class="input-group mb-2">
+
+                                <input readonly style="{% if option.correct %}background-color:green; color:#FFFFFF{% endif %}" name="true" type="text" class="form-control " value="{{ option.name }}">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-light add-button" style="cursor: pointer;">
+                                      <a class="btn btn-danger" href="{% url 'optionDelete' question.id option.id %}">O'chirish</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                        {% endfor %}
+                <br>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
